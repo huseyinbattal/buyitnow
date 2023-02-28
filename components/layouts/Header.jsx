@@ -39,10 +39,13 @@ const Header = () => {
             </Link>
             <Link href="/me">
               <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer">
-                <img className="w-10 h-10 rounded-full" src={"/images/default.png"} />
+                <img
+                  className="w-10 h-10 rounded-full"
+                  src={"/images/default.png"}
+                />
                 <div className="space-y-1 font-medium">
                   <p>
-                    Ghulam
+                    Hüseyin Battal
                     <time className="block text-sm text-gray-500 dark:text-gray-400">
                       test@gmail.com
                     </time>

@@ -18,7 +18,11 @@ const ProductItem = ({ product }) => {
             }}
           >
             <Image
-              src={product?.images[0] ? product?.images[0].url : "/images/default_product.png"}
+              src={
+                product?.images[0]
+                  ? product?.images[0].url
+                  : "/images/default_product.png"
+              }
               alt="product anme"
               height="240"
               width="240"

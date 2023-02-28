@@ -5,7 +5,6 @@ import Filters from "../layouts/Filters";
 import ProductItem from "./ProductItem";
 
 const ListProducts = ({ data }) => {
-  console.log(data);
   return (
     <section className="py-12">
       <div className="container max-w-screen-xl mx-auto px-4">
