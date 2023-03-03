@@ -16,6 +16,13 @@ class APIFilters {
     this.query = this.query.find({ ...keyword });
     return this;
   }
+  filter() {
+    const queryCopy = { ...this.queryStr };
+    const removeFields = ["keyword", "page"];
+    removeFields.forEach((el) => delete queryCopy[el]);
+    this.query = this.query.find(queryCopy);
+    return this;
+  }
 }
 
 export default APIFilters;
