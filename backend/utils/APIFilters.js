@@ -26,7 +26,7 @@ class APIFilters {
         output[key] = queryCopy[key];
       } else {
         prop = key.split("[")[0];
-        let operator = key.match(/\[(.*)\]/)[1]
+        let operator = key.match(/\[(.*)\]/)[1];
         if (!output[prop]) {
           output[prop] = {};
         }
@@ -34,6 +34,12 @@ class APIFilters {
       }
     }
     this.query = this.query.find(output);
+    return this;
+  }
+  pagination(resPerPage) {
+    const currentPage = Number(this.queryStr.page) || 1;
+    const skip = resPerPage * (currentPage - 1);
+    this.query = this.query.limit(resPerPage).skip(skip);
     return this;
   }
 }
