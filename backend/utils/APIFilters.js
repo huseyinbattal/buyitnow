@@ -3,6 +3,7 @@ class APIFilters {
     this.query = query;
     this.queryStr = queryStr;
   }
+
   search() {
     const keyword = this.queryStr.keyword
       ? {
@@ -15,12 +16,14 @@ class APIFilters {
     this.query = this.query.find({ ...keyword });
     return this;
   }
+
   filter() {
     const queryCopy = { ...this.queryStr };
     const removeFields = ["keyword", "page"];
     removeFields.forEach((el) => delete queryCopy[el]);
     let output = {};
     let prop = "";
+    
     for (let key in queryCopy) {
       if (!key.match(/\b(gt|gte|lt|lte)/)) {
         output[key] = queryCopy[key];
@@ -33,9 +36,12 @@ class APIFilters {
         output[prop][`$${operator}`] = queryCopy[key];
       }
     }
+
     this.query = this.query.find(output);
     return this;
+  
   }
+
   pagination(resPerPage) {
     const currentPage = Number(this.queryStr.page) || 1;
     const skip = resPerPage * (currentPage - 1);
