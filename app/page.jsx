@@ -7,12 +7,11 @@ import queryString from 'query-string';
 const getProducts = async (searchParams) => {
 
   const urlParams = {
-    keyword: searchParams.keyword
+    keyword: searchParams.keyword,
+    page:searchParams.page
   }
 
   const searchQuery = queryString.stringify(urlParams);
-
-  console.log(searchQuery);
 
   const { data } = await axios.get(`${process.env.API_URL}/api/products?${searchQuery}`);
   return data;
@@ -20,7 +19,6 @@ const getProducts = async (searchParams) => {
 
 const HomePage = async ({searchParams}) => {
   const productsData = await getProducts(searchParams);
- // console.log(searchParams);
   return <ListProducts data={productsData}/>
 }
 
