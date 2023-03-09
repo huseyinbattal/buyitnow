@@ -57,16 +57,22 @@ export const CartProvider = ({ children }) => {
     }
 
     localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
-
     setCartToState();
-
   };
+
+  const deleteItemFromCart = (id) => {
+    const newCartItems = cart?.cartItems?.filter((i) => i.product !== id);
+
+    localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
+    setCartToState();
+  }
 
   return (
     <CartContext.Provider
       value={{
         cart,
         addItemToCart,
+        deleteItemFromCart,
       }}
     >
       {children}
