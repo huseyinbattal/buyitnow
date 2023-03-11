@@ -25,6 +25,14 @@ const Cart = () => {
     addItemToCart(item);
   };
 
+  const amountWithoutTax = cart?.cartItems
+    ?.reduce((acc, item) => acc + item.quantity * item.price, 0)
+    .toFixed(2);
+
+  const taxAmount = (amountWithoutTax * 0.15).toFixed(2);
+
+  const totalAmount = (Number(amountWithoutTax) + Number(taxAmount)).toFixed(2);
+
   return (
     <>
       <section className="py-5 sm:py-7 bg-blue-100">
@@ -96,7 +104,7 @@ const Cart = () => {
                         <div>
                           <div className="leading-5">
                             <p className="font-semibold not-italic">
-                              ${cartItem.price * cartItem.quantity.toFixed(2)}
+                              ${(cartItem.price * cartItem.quantity).toFixed(2)}
                             </p>
                             <small className="text-gray-400">
                               {" "}
@@ -106,8 +114,11 @@ const Cart = () => {
                         </div>
                         <div className="flex-auto">
                           <div className="float-right">
-                            <a className="px-4 py-2 inline-block text-red-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 cursor-pointer"
-                            onClick={()=>deleteItemFromCart(cartItem?.product)}
+                            <a
+                              className="px-4 py-2 inline-block text-red-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 cursor-pointer"
+                              onClick={() =>
+                                deleteItemFromCart(cartItem?.product)
+                              }
                             >
                               Remove
                             </a>
@@ -124,20 +135,22 @@ const Cart = () => {
                 <article className="border border-gray-200 bg-white shadow-sm rounded mb-5 p-3 lg:p-5">
                   <ul className="mb-5">
                     <li className="flex justify-between text-gray-600  mb-1">
-                      <span>Total price:</span>
-                      <span>$98</span>
+                      <span>Amount before Tax:</span>
+                      <span>${amountWithoutTax}</span>
                     </li>
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Total Units:</span>
-                      <span className="text-green-500">7 (Units)</span>
+                      <span className="text-green-500">
+                        {cart?.cartItems?.reduce((acc, item) => acc + item.quantity, 0)} (Units)
+                      </span>
                     </li>
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>TAX:</span>
-                      <span>$78</span>
+                      <span>${taxAmount}</span>
                     </li>
                     <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
                       <span>Total price:</span>
-                      <span>$898</span>
+                      <span>${totalAmount}</span>
                     </li>
                   </ul>
 
