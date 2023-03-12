@@ -31,17 +31,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const clearErrors = () => {
+    setError(null);
+  }
+
   return (
-    <AuthProvider.Provider
+    <AuthContext.Provider
       value={{
         user,
         error,
         setUser,
         registerUser,
+        clearErrors,
       }}
     >
       {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
   );
 };
 
