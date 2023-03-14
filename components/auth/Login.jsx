@@ -26,6 +26,7 @@ const Login = () => {
     }
 
     if (data?.ok) {
+        toast.success("Login Successfuly");
       router.push("/")
     }
   };
