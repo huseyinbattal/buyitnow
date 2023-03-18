@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useContext } from "react";
 // import UserAddresses from "../user/UserAddresses";
@@ -6,7 +6,6 @@ import Link from "next/link";
 import AuthContext from "@/context/AuthContext";
 
 const Profile = () => {
-
   const { user } = useContext(AuthContext);
 
   console.log(user);
@@ -17,7 +16,7 @@ const Profile = () => {
         <div className="relative">
           <img
             className="w-16 h-16 rounded-full mr-4"
-            src={user?.avatar? user?.avatar?.url : "/images/default.png"}
+            src={user?.avatar ? user?.avatar?.url : "/images/default.png"}
             alt={user?.name}
           />
         </div>
@@ -25,7 +24,7 @@ const Profile = () => {
           <h5 className="font-semibold text-lg">{user?.name}</h5>
           <p>
             <b>Email:</b> {user?.email} | <b>Joined On:</b>
-            2023-12-24
+            {user?.createdAt.substring(0,10)}
           </p>
         </figcaption>
       </figure>
