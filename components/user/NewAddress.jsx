@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useContext, useState } from "react";
 import Sidebar from "../layouts/Sidebar";
@@ -6,7 +6,6 @@ import { countries } from "countries-list";
 import AuthContext from "@/context/AuthContext";
 
 const NewAddress = () => {
-
   const { error, addNewAddress, clearErrors } = useContext(AuthContext);
 
   const countriesList = Object.values(countries);
@@ -28,11 +27,10 @@ const NewAddress = () => {
       zipCode,
       phoneNo,
       country,
-    }
+    };
 
     addNewAddress(newAddress);
-
-  }
+  };
 
   return (
     <>
