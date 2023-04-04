@@ -4,12 +4,14 @@ import {
   getAddresses,
   newAddress,
 } from "@/backend/controllers/addressControllers";
+import { isAuthenticatedUser } from "@/backend/middlewares/auth";
+import onError from "@/backend/middlewares/errors";
 
-const handler = nc();
+const handler = nc({onError});
 
 dbConnect();
 
-handler.get(getAddresses);
-handler.post(newAddress);
+handler.use(isAuthenticatedUser).get(getAddresses);
+handler.use(isAuthenticatedUser).post(newAddress);
 
 export default handler;

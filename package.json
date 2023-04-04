@@ -13,7 +13,7 @@
     "bcryptjs": "^2.4.3",
     "countries-list": "^2.6.1",
     "mongoose": "^6.10.0",
-    "next": "^13.2.3",
+    "next": "^13.2.4",
     "next-auth": "^4.20.1",
     "next-connect": "^0.13.0",
     "query-string": "^8.1.0",
