@@ -43,3 +43,17 @@ export const updateAddress = async (req, res) => {
     address,
   });
 };
+
+export const deleteAddress = async (req, res) => {
+  let address = await Address.findById(req.query.id);
+
+  if (!address) {
+    return next(new ErrorHandler("Address not found", 404));
+  }
+
+  await address.remove();
+
+  res.status(200).json({
+    success: true,
+  });
+};
